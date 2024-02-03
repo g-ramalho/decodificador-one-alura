@@ -20,7 +20,7 @@ function resetarLayout() {
 }
 
 function verificarTexto(texto) {
-    const regex = /[A-Z`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const regex = /[A-Z`@#$%^&*()_+\-=\[\]{};':"\\|<>\/~]/;
     if (texto.length == 0 || texto.length == undefined || regex.test(texto)) {
         resetarLayout();
         return true;
