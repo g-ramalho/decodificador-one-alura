@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* RESET CSS: */
+*, 
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body {
+    font-size: 100%;
+    list-style-type: none;
+}
+
+:root {
+    --fonte-primaria: 'Inter', sans-serif;
+
+    --cor-primaria: #0A3871;
+    --cor-background: #F3F5FC;
+}
+
+body {
+    background-color: var(--cor-background);
+}
+
+.decodificador {
+    display: flex;
+    padding: 3.9vh 2.7vw 3.9vh 15.6vw;
+    gap: 5.5vw;
+}
+
+/* INPUT: */
+
+.decodificador__entrada {
+    padding: 12.5vh 0 0 0;
+    width: 47.2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh; /* distancia entre o input e a legenda */
+}
+
+#decodificador-input {
+    font-family: var(--fonte-primaria);
+    font-size: 1.5rem;
+    text-align: start;
+    color: var(--cor-primaria);
+    background-color: var(--cor-background);
+    border: transparent;
+    outline-width: 1px;
+    height: 55vh;
+    resize: none;
+}
+
+#decodificador-input::placeholder {
+    color: var(--cor-primaria);
+    opacity: 1;
+}
+
+.decodificador__entrada__botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh; /* distancia entre a legenda e os botoes */
+}
+
+#legenda-botoes {
+    font-family: var(--fonte-primaria);
+    font-size: 0.75rem;
+    color: #495057;
+    display: flex;
+    padding-left: 1vw;
+    gap: 5px;
+    align-items: center;
+}
+
+.decodificador__entrada__botoes__opcoes {
+    display: flex;
+    justify-content: center;
+    gap: 1.6vw; /*distancia do vao entre os botoes */
+}
+
+.decodificador__entrada__botoes__opcoes__botao {
+    width: 328px;
+    height: 67px;
+    font-family: var(--fonte-primaria);
+    font-size: 1rem;
+    border-radius: 27px;
+    border-color: var(--cor-primaria);
+    border-width: 1px;
+    transition: background-color 0.2s ease-out;
+    cursor: pointer;
+}
+
+#botao-criptografar {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+#botao-criptografar:hover {
+    background-color: #0c2444;
+}
+
+#botao-descriptografar {
+    background-color: #D8DFE8;
+    color: var(--cor-primaria);
+}
+
+#botao-descriptografar:hover {
+    background-color: #c0c0c0;
+}
+
+/* OUTPUT: */
+
+.decodificador__saida {
+    height: 91vh;
+    width: 27vw; 
+    background-color: white;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8vh;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 0.08);
+}
+
+#saida-imagem {
+    height: 228px;
+    width: 252px;
+    align-self: center;
+}
+
+.decodificador__saida__alerta {
+    padding: 0 2.2vw 0 2.2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: var(--fonte-primaria);
+    text-align: center;
+}
+
+#alerta-titulo {
+    color: #343A40;
+    font-size: 1.2rem;
+    line-height: 1.25rem;
+}
+
+#alerta-texto {
+    color: #495057;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+}
+
+@media (max-width: 1000px) {
+    .decodificador {
+        padding: 0 5vw 0 5vw;
+        flex-direction: column;
+    }
+
+    .decodificador__entrada {
+        padding-top: 10vh;
+        height: auto;
+    }
+
+    #decodificador-input {
+        padding: 0 2vw;
+        height: 70vh;
+        width: 90vw;
+    }
+
+    #legenda-botoes {
+        padding-left: 3vw;
+    }
+
+    .decodificador__entrada__botoes {
+        width: 90vw;
+        padding: 0 2vw 0 2vw;
+    }
+
+    .decodificador__saida {
+        width: 90vw;
+        height: auto;
+        margin-bottom: 3vh;
+    }
+
+    .decodificador__saida__alerta {
+        padding: 10%;
+    }
+
+    #saida-imagem {
+        display: none;
+    }
+}
+
+@media (max-width: 450px) {
+    .decodificador__entrada__botoes__opcoes {
+        flex-direction: column;
+    }
+
+    .decodificador__entrada__botoes__opcoes__botao {
+        width: 100%;
+    }
+}
