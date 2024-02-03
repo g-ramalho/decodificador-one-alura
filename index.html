@@ -18,19 +18,23 @@
                 </label>
 
                 <div class="decodificador__entrada__botoes__opcoes">
-                    <button type="submit" class="decodificador__entrada__botoes__opcoes__botao" id="botao-criptografar">Criptografar</button>
-                    <button type="submit" class="decodificador__entrada__botoes__opcoes__botao" id="botao-descriptografar">Descriptografar</button>
+                    <button type="submit" class="decodificador__entrada__botoes__opcoes__botao" id="botao-criptografar" onclick="criptografar();">Criptografar</button>
+                    <button type="submit" class="decodificador__entrada__botoes__opcoes__botao" id="botao-descriptografar" onclick="descriptografar();">Descriptografar</button>
                 </div>
             </div>
         </section>
 
         <section class="decodificador__saida">
+            <textarea id="decodificador-output" readonly></textarea>
+
             <img id="saida-imagem" src="assets/sem_texto.png">
 
             <div class="decodificador__saida__alerta">
                 <h3 id="alerta-titulo">Nenhuma mensagem encontrada</h3>
                 <p id="alerta-texto">Digite um texto que você deseja criptografar ou descriptografar.</p>
             </div>
+
+            <button class="decodificador__entrada__botoes__opcoes__botao" id="botao-clipboard" onclick="copiarTexto();">Copiar</button>
         </section>
     </main>
 

@@ -85,7 +85,7 @@ body {
     height: 67px;
     font-family: var(--fonte-primaria);
     font-size: 1rem;
-    border-radius: 27px;
+    border-radius: 24px;
     border-color: var(--cor-primaria);
     border-width: 1px;
     transition: background-color 0.2s ease-out;
@@ -124,6 +124,21 @@ body {
     box-shadow: 0 10px 20px rgb(0 0 0 / 0.08);
 }
 
+#decodificador-output {
+    top: 5vh;
+    position: relative;
+    height: 60vh;
+    width: 23vw;
+    font-family: var(--fonte-primaria);
+    color: var(--cor-primaria);
+    font-size: 1.5rem;
+    align-self: center;
+    resize: none;
+    border: none;
+    outline: none;
+    display: none;
+}
+
 #saida-imagem {
     height: 228px;
     width: 252px;
@@ -149,6 +164,20 @@ body {
     color: #495057;
     font-size: 0.8rem;
     line-height: 1.25rem;
+}
+
+#botao-clipboard {
+    position: relative;
+    bottom: 5vh;
+    align-self: center;
+    background-color: white;
+    color: var(--cor-primaria);
+    width: 280px;
+    display: none;
+}
+
+#botao-clipboard:hover {
+    background-color: rgb(240, 234, 234);
 }
 
 @media (max-width: 1000px) {
