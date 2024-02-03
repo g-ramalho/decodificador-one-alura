@@ -7,7 +7,6 @@ function mostrarResultado(resultado) {
     let output = document.getElementById("decodificador-output");
     output.style.display = "flex";
     output.value = resultado;
-    document.getElementsByClassName("decodificador__saida").style.gap = "50vh";
 }
 
 function resetarLayout() {
@@ -62,11 +61,12 @@ function descriptografar() {
     }
 }
 
-function copiarTexto() {
-    let botaoCopiar = document.getElementById("botao-clipboard");
+async function copiarTexto() {
+    let textoInput = document.getElementById("decodificador-output");
 
-    botaoCopiar.select();
-    botaoCopiar.setSelectionRange(0, 99999);
-
-    navigator.clipboard.writeText(botaoCopiar.innerHTML);
+    try {
+        await navigator.clipboard.writeText(textoInput.value);
+    }catch (error) {
+        console.error(error.message);
+    }
 }
