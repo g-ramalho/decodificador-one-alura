@@ -2,6 +2,10 @@ function mostrarResultado(resultado) {
     document.getElementById("saida-imagem").style.display = "none";
     document.getElementById("alerta-titulo").style.display = "none";
     document.getElementById("alerta-texto").style.display = "none";
+    const decAlerta = document.querySelectorAll(".decodificador__saida__alerta");
+    decAlerta.forEach(elemento => {
+        elemento.style.display = "none"; 
+    })
 
     document.getElementById("botao-clipboard").style.display = "block";
     let output = document.getElementById("decodificador-output");
@@ -10,6 +14,11 @@ function mostrarResultado(resultado) {
 }
 
 function resetarLayout() {
+    const decAlerta = document.querySelectorAll(".decodificador__saida__alerta");
+    decAlerta.forEach(elemento => {
+        elemento.setAttribute("style", ""); 
+    })
+
     document.getElementById("saida-imagem").setAttribute("style", "");
     document.getElementById("alerta-titulo").setAttribute("style", "");
     document.getElementById("alerta-texto").setAttribute("style", "");

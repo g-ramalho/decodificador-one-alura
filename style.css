@@ -167,8 +167,6 @@ body {
 }
 
 #botao-clipboard {
-    position: relative;
-    bottom: 5vh;
     align-self: center;
     background-color: white;
     color: var(--cor-primaria);
@@ -219,6 +217,15 @@ body {
 
     #saida-imagem {
         display: none;
+    }
+
+    #decodificador-output {
+        width: 80%;
+        height: 15vh;
+    }
+
+    #botao-clipboard {
+        margin-bottom: 3vh;
     }
 }
 
