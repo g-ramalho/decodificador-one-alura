@@ -1,37 +1,46 @@
+let alertaTexto = document.getElementById("alerta-texto");
+let input = document.getElementById("decodificador-input");
+let alertaImagem = document.getElementById("saida-imagem");
+let alertaTitulo = document.getElementById("alerta-titulo");
+let output = document.getElementById("decodificador-output");
+let botaoClipboard = document.getElementById("botao-clipboard");
+const decAlerta = document.querySelectorAll(".decodificador__saida__alerta");
+
 function mostrarResultado(resultado) {
-    document.getElementById("saida-imagem").style.display = "none";
-    document.getElementById("alerta-titulo").style.display = "none";
-    document.getElementById("alerta-texto").style.display = "none";
-    const decAlerta = document.querySelectorAll(".decodificador__saida__alerta");
+    alertaImagem.style.display = "none";
+    alertaTitulo.style.display = "none";
+    alertaTexto.style.display = "none";
+    botaoClipboard.style.display = "block";    
+    output.style.display = "flex";
+    output.value = resultado;
     decAlerta.forEach(elemento => {
         elemento.style.display = "none"; 
     })
-
-    document.getElementById("botao-clipboard").style.display = "block";
-    let output = document.getElementById("decodificador-output");
-    output.style.display = "flex";
-    output.value = resultado;
 }
 
 function resetarLayout() {
-    const decAlerta = document.querySelectorAll(".decodificador__saida__alerta");
     decAlerta.forEach(elemento => {
         elemento.setAttribute("style", ""); 
     })
-
-    document.getElementById("saida-imagem").setAttribute("style", "");
-    document.getElementById("alerta-titulo").setAttribute("style", "");
-    document.getElementById("alerta-texto").setAttribute("style", "");
-    document.getElementById("decodificador-output").setAttribute("style", "");
-    document.getElementById("botao-clipboard").setAttribute("style", "");
-
-    document.getElementById("decodificador-input").value = "";
+    input.value = "";
+    alertaImagem.setAttribute("style", "");
+    output.setAttribute("style", "");
+    botaoClipboard.setAttribute("style", "");
+    alertaTitulo.setAttribute("style", "");
+    alertaTexto.setAttribute("style", "");
+    alertaTitulo.innerHTML = "Nenhuma mensagem encontrada";
+    alertaTexto.innerHTML = "Digite um texto que você deseja criptografar ou descriptografar.";
 }
 
 function verificarTexto(texto) {
     const regex = /[A-Z`@#$%^&*()_+\-=\[\]{};':"\\|<>\/~]/;
-    if (texto.length == 0 || texto.length == undefined || regex.test(texto)) {
+    if (texto.length == 0 || texto.length == undefined) {
         resetarLayout();
+        return true;
+    }else if (regex.test(texto)) {
+        resetarLayout();
+        alertaTitulo.innerHTML = "Mensagem inválida!";
+        alertaTexto.innerHTML = "A mensagem digitada não pode conter caracteres especiais e deve ser escrita totalmente com letras minúsculas";
         return true;
     }else {
         return false;
@@ -39,42 +48,32 @@ function verificarTexto(texto) {
 }
 
 function criptografar() {
-    let textoInput = document.getElementById("decodificador-input");
-    let texto = textoInput.value;
-    if (verificarTexto(texto)) {
-        // o input invalido
-    }else{
-        let resultado = texto.replaceAll("a",   "ai");
-        resultado = resultado.replaceAll("e","enter");
+    let texto = input.value;
+    if (!verificarTexto(texto)) {
+        let resultado = texto.replaceAll("e","enter");
         resultado = resultado.replaceAll("i", "imes");
+        resultado = resultado.replaceAll("a",   "ai");
         resultado = resultado.replaceAll("o", "ober");
         resultado = resultado.replaceAll("u", "ufat");
-
         mostrarResultado(resultado);
     }
 }
 
 function descriptografar() {
-    let textoInput = document.getElementById("decodificador-input");
-    let texto = textoInput.value;
-    if (verificarTexto(texto)) {
-        // o input invalido
-    }else{
-        let resultado = texto.replaceAll("ai",   "a");
-        resultado = resultado.replaceAll("enter","e");
+    let texto = input.value;
+    if (!verificarTexto(texto)) {
+        let resultado = texto.replaceAll("enter","e");
         resultado = resultado.replaceAll("imes", "i");
+        resultado = resultado.replaceAll("ai",   "a");
         resultado = resultado.replaceAll("ober", "o");
         resultado = resultado.replaceAll("ufat", "u");
-
         mostrarResultado(resultado);
     }
 }
 
 async function copiarTexto() {
-    let textoInput = document.getElementById("decodificador-output");
-
     try {
-        await navigator.clipboard.writeText(textoInput.value);
+        await navigator.clipboard.writeText(output.value);
     }catch (error) {
         console.error(error.message);
     }
